@@ -1,25 +1,31 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
 import { requireOwner } from "@/lib/supabase";
 import { RestoreSession } from "@/app/components/restore-session";
+import { WorkshopMark } from "@/app/components/workshop-mark";
+import { getBrand } from "@/lib/catalog";
+import { WorkspaceNav } from "./workspace-nav";
 import { signOut } from "./actions";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminLayout({ children }: { children: ReactNode }) {
   await requireOwner();
+  const brand = await getBrand();
   return (
-    <main className="shell workspace">
+    <div className="workspace-frame">
       <RestoreSession />
-      <nav className="workspace-nav" aria-label="Panel del taller">
-        <Link className="button secondary small" href="/admin/pedidos">Pedidos</Link>
-        <Link className="button secondary small" href="/admin/productos">Productos</Link>
-        <Link className="button secondary small" href="/admin/inventario">Inventario</Link>
-        <Link className="button secondary small" href="/admin/clientes">Clientes</Link>
-        <Link className="button secondary small" href="/admin/configuracion">Configuración</Link>
-        <form action={signOut}><button className="button secondary small">Cerrar sesión</button></form>
-      </nav>
-      {children}
-    </main>
+      <aside className="workspace-sidebar">
+        <WorkshopMark brand={brand} />
+        <WorkspaceNav />
+        <form action={signOut}><button type="submit">Cerrar sesión</button></form>
+      </aside>
+      <div className="workspace-content">
+        <header className="workspace-header">
+          <span>Gestión del taller</span>
+          <span className="status">Propietaria</span>
+        </header>
+        <main className="workspace">{children}</main>
+      </div>
+    </div>
   );
 }

@@ -102,7 +102,7 @@ create table public.brand_settings (
   whatsapp text not null default '' check (whatsapp = '' or whatsapp ~ '^[0-9]{10,15}$'),
   payment_methods text not null default '' check (length(payment_methods) <= 300)
 );
-insert into public.brand_settings (name, primary_color) values ('Taller de Doña Ana', '#54314f');
+insert into public.brand_settings (name, primary_color) values ('Taller de Doña Ana', '#a95138');
 
 create function public.log_price_change()
 returns trigger language plpgsql security definer set search_path = ''

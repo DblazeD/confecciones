@@ -48,6 +48,6 @@ Las pruebas ejecutan la migración en PGlite con roles equivalentes a los de Sup
 | Pedidos y clientes | RF-48 a RF-52, RF-58, RF-60 |
 | Uso en celular y computador | RF-84 |
 
-El acceso por internet (RF-85) se completa con el despliegue. El nombre inicial es **Taller de Doña Ana**, editable desde el panel. La imagen de portada es ilustrativa, generada para el proyecto.
+El acceso por internet (RF-85) se completa con el despliegue. El nombre inicial es **Taller de Doña Ana**, editable desde el panel. La portada y la imagen de prendas se basan en el prototipo de Figma del proyecto.
 
 La Fase 2 del Excel incluye ventas, pagos manuales, reportes, inventario completo, proveedores, medidas y roles. La Fase 3 incluye costeo detallado, pasarela de pagos, facturación electrónica y automatizaciones.

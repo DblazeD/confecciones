@@ -38,7 +38,7 @@ type CatalogPage = {
 const fallbackBrand: Brand = {
   name: "Taller de Doña Ana",
   logo: "",
-  primary_color: "#54314f",
+  primary_color: "#a95138",
   phone: "",
   whatsapp: "",
   payment_methods: "",

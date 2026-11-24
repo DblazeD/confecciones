@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { WorkshopMark } from "@/app/components/workshop-mark";
 import { getBrand, listCatalog } from "@/lib/catalog";
 import { first, mediaUrl, money, whatsappLink } from "@/lib/format";
 
@@ -21,14 +22,27 @@ export default async function Home({ searchParams }: { searchParams: Filters }) 
 
   return (
     <main>
-      <section className="hero shell">
-        <div className="hero-copy">
-          <p className="eyebrow">Confección y arreglos</p>
-          <h1>El oficio de<br />hacer a mano.</h1>
-          <p className="hero-note">Conoce el catálogo del taller y consulta por las prendas que te interesan.</p>
-          <Link className="button" href="#catalogo">Explorar el catálogo</Link>
+      <section className="hero" aria-labelledby="hero-title">
+        <div className="hero-left">
+          <WorkshopMark brand={brand} />
+          <div className="hero-copy">
+            <p className="eyebrow">Hecho a mano, pensado para ti</p>
+            <h1 id="hero-title">Prendas que cuentan <em>tu historia.</em></h1>
+            <p className="hero-note">Descubre nuestros productos y consulta por prendas y arreglos. Cada puntada lleva dedicación, detalle y el cariño de lo hecho a mano.</p>
+            <div className="hero-actions">
+              <Link className="button" href="#catalogo">Ver catálogo</Link>
+              <Link className="button secondary" href="/acceso">Acceso propietaria</Link>
+            </div>
+            <ul className="hero-details">
+              <li>Diseños personalizados</li>
+              <li>Atención cercana</li>
+            </ul>
+          </div>
         </div>
-        <Image src="/taller.webp" alt="Máquina de coser, hilos y telas sobre una mesa de trabajo" width={1180} height={787} priority />
+        <figure className="hero-photo">
+          <Image src="/taller-productos.webp" alt="Vestidos y prendas de tela en tonos terracota, rosa y verde" fill preload sizes="(max-width: 860px) 100vw, 52vw" />
+          <figcaption>Confeccionando momentos especiales</figcaption>
+        </figure>
       </section>
 
       <section className="shell catalog" id="catalogo">

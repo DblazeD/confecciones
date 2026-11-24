@@ -32,7 +32,7 @@ export default async function ProductsPage() {
         </tr>)}</tbody>
       </table></div> : <p>Aún no hay productos registrados.</p>}
     </section>
-    <section className="panel">
+    <section className="panel" id="categorias">
       <h2>Categorías</h2>
       <ActionForm action={saveCategory} label="Agregar categoría">
         <label>Nombre de la categoría <input name="name" required maxLength={80} /></label>

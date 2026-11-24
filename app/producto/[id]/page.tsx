@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Gallery } from "@/app/components/gallery";
+import { WorkshopMark } from "@/app/components/workshop-mark";
 import { getBrand, getProduct } from "@/lib/catalog";
 import { first, money, whatsappLink } from "@/lib/format";
 
@@ -16,7 +17,9 @@ export default async function ProductPage({ params, searchParams }: Props) {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const contact = whatsappLink(brand.whatsapp, `Hola, me interesa ${product.name} (${product.code}): ${new URL("/producto/" + id, base)}`);
   return (
-    <main className="shell detail">
+    <>
+      <header className="site-header"><div className="shell header-inner"><WorkshopMark brand={brand} /></div></header>
+      <main className="shell detail">
       <Link className="back-link" href={back}>Volver al catálogo</Link>
       <div className="detail-grid">
         <Gallery photos={product.photos} name={product.name} />
@@ -34,6 +37,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
           {contact && <a className="button contact-button" href={contact} target="_blank" rel="noreferrer">Consultar por WhatsApp</a>}
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }
